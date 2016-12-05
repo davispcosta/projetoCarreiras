@@ -24,11 +24,21 @@ class EmpresaRequest extends FormRequest
     public function rules()
     {
         return [
+            'tipo_empresa' => 'required',
             'razao_social' => 'required|min:3',
             'nome_fantasia' => 'required|min:3',
-            'email' => 'required|email',
-            'site' => 'required',
-            'cnpj' => 'required|min:14'
+            'ramo' => 'required',
+            'ender_lograd' => 'required',
+            'ender_num' => 'required',
+            'ender_bairro' => 'required',
+            'ender_estado' => 'required',
+            'ender_cidade' => 'required',
+            'ender_cep' => 'required',
+            'telefone01' => 'required',
+            'email' => 'email',
+            'tipo_identificacao' => 'required',
+            'num_identificacao' => 'required',
+
         ];
     }
 }
