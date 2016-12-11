@@ -309,7 +309,7 @@ class ComposerStaticInit5fb92a01dc42882d47efc82de505ba9a
         'CreateEstagio' => __DIR__ . '/../..',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
         'CreateSupervisor' => __DIR__ . '/../..',
-        'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
+        'CreateUsersTable' => __DIR__ . '/../..',
         'CreateVagas' => __DIR__ . '/../..' . '/database/migrations/2016_11_04_145106_create_vagas.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
