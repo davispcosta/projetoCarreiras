@@ -40,5 +40,6 @@ class EmpresaRequest extends FormRequest
             'num_identificacao' => 'required',
 
         ];
+
     }
 }
