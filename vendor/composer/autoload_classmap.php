@@ -11,7 +11,7 @@ return array(
     'CreateEstagio' => $baseDir . '/database/migrations/2016_11_04_151004_create_estagios.php',
     'CreatePasswordResetsTable' => $baseDir . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
     'CreateSupervisor' => $baseDir . '/database/migrations/2016_11_04_150958_create_supervisores.php',
-    'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_admins_table.php',
+    'CreateUsersTable' => $baseDir . '/database/migrations/2014_10_12_000000_create_users_table.php',
     'CreateVagas' => $baseDir . '/database/migrations/2016_11_04_145106_create_vagas.php',
     'DatabaseSeeder' => $baseDir . '/database/seeds/DatabaseSeeder.php',
     'File_Iterator' => $vendorDir . '/phpunit/php-file-iterator/src/Iterator.php',
