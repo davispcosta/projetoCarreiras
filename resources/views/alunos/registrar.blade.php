@@ -33,8 +33,11 @@
                             <div class="alert alert-success">{{ Session::get('mensagem_sucesso') }}</div>
                         @endif
 
-                            {!! Form::label('nome', 'Nome') !!}
-                            {!! Form::input('text', 'nome', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Nome'])  !!}
+                            <div class="form-group {{ $errors->has('nome') ? 'has-error' :'' }}">
+                                {!! Form::label('nome', 'Nome') !!}
+                                {!! Form::text('nome',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('nome','<span class="help-block">:message</span>') !!}
+                            </div>
 
                             {!! Form::label('email', 'Email') !!}
                             {!! Form::input('text', 'email', null, ['class' => 'form-control', '', 'placeholder' => 'Email'])  !!}

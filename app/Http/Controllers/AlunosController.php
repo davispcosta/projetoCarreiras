@@ -27,7 +27,7 @@ class AlunosController extends Controller
         $aluno = new Aluno();
         $aluno = $aluno->create($request->all());
 
-        \Session::flash('mensagem_sucesso','Empresa cadastrada com sucesso!');
+        \Session::flash('mensagem_sucesso','Aluno cadastrado com sucesso!');
         return Redirect::to('/alunos');
     }
 
