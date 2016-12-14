@@ -58,3 +58,14 @@ Route::get('/alunos', 'AlunosController@index');
 
     Route::get('/alunos/{aluno}/editar', 'AlunosController@editar');
 
+
+Route::get('/cursos', 'CursosController@index');
+
+    Route::get('/registrar-curso', 'CursosController@registrar');
+
+    Route::post('/salvar-curso', 'CursosController@salvar');
+    Route::patch('/cursos/{curso}', 'CursosController@atualizar');
+    Route::delete('/cursos/{curso}', 'CursosController@deletar');
+
+    Route::get('/cursos/{curso}/editar', 'CursosController@editar');
+

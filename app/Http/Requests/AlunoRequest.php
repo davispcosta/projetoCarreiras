@@ -24,6 +24,7 @@ class AlunoRequest extends FormRequest
             'identidade' => 'required|min:11',
             'curso' => 'required|min:3',
             'semestre' => 'required',
+            'matricula' => 'required',
         ];
     }
 }

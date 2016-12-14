@@ -17,7 +17,6 @@ class CreateVagas extends Migration
             $table->char('data_publicacao');
             $table->char('data_final');
 
-            $table->rememberToken();
             $table->timestamps();
         });
 

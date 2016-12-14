@@ -304,11 +304,13 @@ class ComposerStaticInit5fb92a01dc42882d47efc82de505ba9a
     );
 
     public static $classMap = array (
+        'CreateAdminsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_admins_table.php',
+        'CreateAlunos' => __DIR__ . '/../..' . '/database/migrations/2016_10_30_194448_create_alunos.php',
+        'CreateCursos' => __DIR__ . '/../..' . '/database/migrations/2016_12_14_200745_create_cursos.php',
         'CreateEmpresas' => __DIR__ . '/../..' . '/database/migrations/2016_10_26_165549_create_empresas.php',
-        'CreateEstagiarios' => __DIR__ . '/../..',
-        'CreateEstagio' => __DIR__ . '/../..',
+        'CreateEstagios' => __DIR__ . '/../..' . '/database/migrations/2016_11_04_151004_create_estagios.php',
         'CreatePasswordResetsTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_100000_create_password_resets_table.php',
-        'CreateSupervisor' => __DIR__ . '/../..',
+        'CreateSupervisores' => __DIR__ . '/../..' . '/database/migrations/2016_11_04_150958_create_supervisores.php',
         'CreateUsersTable' => __DIR__ . '/../..' . '/database/migrations/2014_10_12_000000_create_users_table.php',
         'CreateVagas' => __DIR__ . '/../..' . '/database/migrations/2016_11_04_145106_create_vagas.php',
         'DatabaseSeeder' => __DIR__ . '/../..' . '/database/seeds/DatabaseSeeder.php',

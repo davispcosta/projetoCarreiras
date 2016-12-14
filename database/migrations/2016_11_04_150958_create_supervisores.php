@@ -17,7 +17,6 @@ class CreateSupervisores extends Migration
             $table->char('email');
             $table->integer('telefone');
 
-            $table->rememberToken();
             $table->timestamps();
         });
 

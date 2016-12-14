@@ -59,8 +59,7 @@ class AlunosController extends Controller
 
         \Session::flash('mensagem_sucesso','Aluno deletado com sucesso!');
 
-        return Redirect::to('alunos'
-        );
+        return Redirect::to('alunos');
     }
 }
 

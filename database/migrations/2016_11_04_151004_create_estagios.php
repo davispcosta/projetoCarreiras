@@ -22,7 +22,6 @@ class CreateEstagios extends Migration
             $table->boolean('estagio_fechado');
             $table->boolean('termo_entregue');
 
-            $table->rememberToken();
             $table->timestamps();
         });
 

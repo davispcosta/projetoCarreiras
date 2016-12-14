@@ -1,17 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    @if(count($errors) > 0)
-        <div class="row">
-            <div class="col-md-6">
-                <ul>
-                    @foreach($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -39,29 +28,53 @@
                                 {!! $errors->first('nome','<span class="help-block">:message</span>') !!}
                             </div>
 
-                            {!! Form::label('email', 'Email') !!}
-                            {!! Form::input('text', 'email', null, ['class' => 'form-control', '', 'placeholder' => 'Email'])  !!}
+                            <div class="form-group {{ $errors->has('email') ? 'has-error' :'' }}">
+                                {!! Form::label('email', 'Email') !!}
+                                {!! Form::text('email',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('email','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('endereco', 'Endereço') !!}
-                            {!! Form::input('text', 'endereco', null, ['class' => 'form-control', '', 'placeholder' => 'Endereço'])  !!}
+                            <div class="form-group {{ $errors->has('endereco') ? 'has-error' :'' }}">
+                                {!! Form::label('endereco', 'Endereco') !!}
+                                {!! Form::text('endereco',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('endereco','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('telefone', 'Telefone') !!}
-                            {!! Form::input('text', 'telefone', null, ['class' => 'form-control', '', 'placeholder' => 'Telefone'])  !!}
+                            <div class="form-group {{ $errors->has('telefone') ? 'has-error' :'' }}">
+                                {!! Form::label('telefone', 'Telefone') !!}
+                                {!! Form::text('telefone',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('telefone','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('cpf', 'CPF') !!}
-                            {!! Form::input('text', 'cpf', null, ['class' => 'form-control', '', 'placeholder' => 'CPF'])  !!}
+                            <div class="form-group {{ $errors->has('cpf') ? 'has-error' :'' }}">
+                                {!! Form::label('cpf', 'CPF') !!}
+                                {!! Form::text('cpf',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('cpf','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('identidade', 'Identidade') !!}
-                            {!! Form::input('text', 'identidade', null, ['class' => 'form-control', '', 'placeholder' => 'Identidade'])  !!}
+                            <div class="form-group {{ $errors->has('identidade') ? 'has-error' :'' }}">
+                                {!! Form::label('identidade', 'Identidade') !!}
+                                {!! Form::text('identidade',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('identidade','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('curso', 'Curso') !!}
-                            {!! Form::input('text', 'curso', null, ['class' => 'form-control', '', 'placeholder' => 'Curso'])  !!}
+                            <div class="form-group {{ $errors->has('curso') ? 'has-error' :'' }}">
+                                {!! Form::label('curso', 'Curso') !!}
+                                {!! Form::text('curso',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('curso','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('semestre', 'Semestre') !!}
-                            {!! Form::input('text', 'semestre', null, ['class' => 'form-control', '', 'placeholder' => 'Semestre'])  !!}
+                            <div class="form-group {{ $errors->has('semestre') ? 'has-error' :'' }}">
+                                {!! Form::label('semestre', 'Semestre') !!}
+                                {!! Form::text('',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('semestre','<span class="help-block">:message</span>') !!}
+                            </div>
 
-                            {!! Form::label('matricula', 'Matrícula') !!}
-                            {!! Form::input('text', 'matricula', null, ['class' => 'form-control', '', 'placeholder' => 'Matricula'])  !!}
+                            <div class="form-group {{ $errors->has('matricula') ? 'has-error' :'' }}">
+                                {!! Form::label('matricula', 'Matricula') !!}
+                                {!! Form::text('',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! $errors->first('matricula','<span class="help-block">:message</span>') !!}
+                            </div>
 
                             {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
 

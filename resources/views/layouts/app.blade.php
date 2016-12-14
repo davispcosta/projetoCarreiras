@@ -50,6 +50,7 @@
                               <li><a href="{{ url('/vagas') }}">Vagas</a></li>
                               <li><a href="{{ url('/estagios') }}">Estagios</a></li>
                               <li><a href="{{ url('/alunos') }}">Alunos</a></li>
+                              <li><a href="{{ url('/cursos') }}">Cursos</a></li>
                         @endif
                     </ul>
 
