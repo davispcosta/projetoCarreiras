@@ -72,7 +72,7 @@
 
                             <div class="form-group {{ $errors->has('matricula') ? 'has-error' :'' }}">
                                 {!! Form::label('matricula', 'Matricula') !!}
-                                {!! Form::text('',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! Form::input('number','matricula',null,['class'=>'form-control','placeholder'=>'']) !!}
                                 {!! $errors->first('matricula','<span class="help-block">:message</span>') !!}
                             </div>
 
