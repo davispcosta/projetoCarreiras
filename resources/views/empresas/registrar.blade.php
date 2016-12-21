@@ -34,25 +34,25 @@
                         @endif
 
                             <div class="form-group {{ $errors->has('tipo_empresa') ? 'has-error' :'' }}">
-                                {!! Form::label('tipo_empresa', 'Tipo da Empresa:') !!}
+                                {!! Form::label('tipo_empresa', '(obrig.) Tipo da Empresa:') !!}
                                 {!! Form::select('tipo_empresa', array('Unidade Concendente', 'Agente de Integração')) !!}
                                 {!! $errors->first('tipo_empresa','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('razao_social') ? 'has-error' :'' }}">
-                                {!! Form::label('razao_social', 'Razão Social') !!}
+                                {!! Form::label('razao_social', '(obrig.) Razão Social') !!}
                                 {!! Form::input('text', 'razao_social', null, ['class' => 'form-control', 'autofocus'])  !!}
                                 {!! $errors->first('razao_social','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('nome_fantasia') ? 'has-error' :'' }}">
-                                {!! Form::label('nome_fantasia', 'Nome Fantasia') !!}
+                                {!! Form::label('nome_fantasia', '(obrig.) Nome Fantasia') !!}
                                 {!! Form::input('text', 'nome_fantasia', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('nome_fantasia','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('ramo') ? 'has-error' :'' }}">
-                                {!! Form::label('ramo', 'Ramo da Atividade:') !!}
+                                {!! Form::label('ramo', '(obrig.) Ramo da Atividade:') !!}
                                 {!! Form::select('ramo', array('Comércio', 'Indústria', 'Serviços', 'ONG', 'Setor Público')) !!}
                                 {!! $errors->first('ramo','<span class="help-block">:message</span>') !!}
                             </div>
@@ -62,19 +62,19 @@
 
 
                             <div class="form-group {{ $errors->has('ender_lograd') ? 'has-error' :'' }}">
-                                {!! Form::label('ender_lograd', 'Logradouro') !!}
+                                {!! Form::label('ender_lograd', '(obrig.) Logradouro') !!}
                                 {!! Form::input('text', 'ender_lograd', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('ender_lograd','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('ender_num') ? 'has-error' :'' }}">
-                                {!! Form::label('ender_num', 'Número') !!}
+                                {!! Form::label('ender_num', '(obrig.) Número') !!}
                                 {!! Form::input('text', 'ender_num', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('ender_num','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('ender_bairro') ? 'has-error' :'' }}">
-                                {!! Form::label('ender_bairro', 'Bairro') !!}
+                                {!! Form::label('ender_bairro', '(obrig.) Bairro') !!}
                                 {!! Form::input('text', 'ender_bairro', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('ender_bairro','<span class="help-block">:message</span>') !!}
                             </div>
@@ -86,19 +86,19 @@
                             </div>
 
                             <div class="form-group {{ $errors->has('ender_estado') ? 'has-error' :'' }}">
-                                {!! Form::label('ender_estado', 'Estado') !!}
+                                {!! Form::label('ender_estado', '(obrig.) Estado') !!}
                                 {!! Form::input('text', 'ender_estado', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('ender_estado','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('ender_cidade') ? 'has-error' :'' }}">
-                                {!! Form::label('ender_cidade', 'Cidade') !!}
+                                {!! Form::label('ender_cidade', '(obrig.) Cidade') !!}
                                 {!! Form::input('text', 'ender_cidade', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('ender_cidade','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('ender_cep') ? 'has-error' :'' }}">
-                                {!! Form::label('ender_cep', 'CEP') !!}
+                                {!! Form::label('ender_cep', '(obrig.) CEP') !!}
                                 {!! Form::input('text', 'ender_cep', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('ender_cep','<span class="help-block">:message</span>') !!}
                             </div>
@@ -106,7 +106,7 @@
                         <!-- ------ FIM DO ENDEREÇO ------ -->
 
                             <div class="form-group {{ $errors->has('telefone01') ? 'has-error' :'' }}">
-                                {!! Form::label('telefone01', 'Telefone 1') !!}
+                                {!! Form::label('telefone01', '(obrig.) Telefone 1') !!}
                                 {!! Form::input('text', 'telefone01', null, ['class' => 'form-control'])  !!}
                                 {!! $errors->first('telefone01','<span class="help-block">:message</span>') !!}
                             </div>

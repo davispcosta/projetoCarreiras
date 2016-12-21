@@ -58,21 +58,21 @@
                                 {!! $errors->first('identidade','<span class="help-block">:message</span>') !!}
                             </div>
 
-                            <div class="form-group {{ $errors->has('curso') ? 'has-error' :'' }}">
-                                {!! Form::label('curso', 'Curso') !!}
-                                {!! Form::text('curso',null,['class'=>'form-control','placeholder'=>'']) !!}
-                                {!! $errors->first('curso','<span class="help-block">:message</span>') !!}
+                            <div class="form-group {{ $errors->has('curso_id') ? 'has-error' :'' }}">
+                                {!! Form::label('curso_id', 'Curso') !!}
+                                {!! Form::select('curso_id', $cursos, $aluno->curso_id) !!}
+                                {!! $errors->first('curso_id','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('semestre') ? 'has-error' :'' }}">
                                 {!! Form::label('semestre', 'Semestre') !!}
-                                {!! Form::text('',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! Form::text('semestre',null,['class'=>'form-control','placeholder'=>'']) !!}
                                 {!! $errors->first('semestre','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('matricula') ? 'has-error' :'' }}">
                                 {!! Form::label('matricula', 'Matricula') !!}
-                                {!! Form::input('number','matricula',null,['class'=>'form-control','placeholder'=>'']) !!}
+                                {!! Form::input('text','matricula',null,['class'=>'form-control','placeholder'=>'']) !!}
                                 {!! $errors->first('matricula','<span class="help-block">:message</span>') !!}
                             </div>
 

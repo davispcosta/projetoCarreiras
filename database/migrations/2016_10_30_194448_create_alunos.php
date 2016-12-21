@@ -17,14 +17,21 @@ class CreateAlunos extends Migration
             $table->char('telefone', 12);
             $table->char('cpf', 12)->unique();
             $table->char('identidade', 11);
-            $table->string('curso');
             $table->integer('semestre');
             $table->integer('matricula');
 
             $table->rememberToken();
             $table->timestamps();
         });
+
+        Schema::table('alunos', function (Blueprint $table){
+            $table->integer('curso_id')->unsigned()->index()->default(1);
+            $table->foreign('curso_id')
+                ->references('id')
+                ->on('cursos');
+        });
     }
+
 
 
     public function down()

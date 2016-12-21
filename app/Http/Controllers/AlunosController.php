@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\AlunoRequest;
 use App\Aluno;
+use App\Curso;
 use Illuminate\Support\Facades\Redirect;
 
 
@@ -19,7 +20,10 @@ class AlunosController extends Controller
 
     public function registrar() {
 
-        return view('alunos.registrar');
+        $aluno = new Aluno();
+        $cursos = Curso::pluck('nome', 'id')->all();
+
+        return view('alunos.registrar', compact('aluno', 'cursos'));
     }
 
     public function salvar(AlunoRequest $request) {
