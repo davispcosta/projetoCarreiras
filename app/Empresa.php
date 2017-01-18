@@ -2,18 +2,51 @@
 
 namespace App;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Notifications\EmpresaResetPassword;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class Empresa extends BaseModel {
+class Empresa extends Authenticatable
+{
+    use Notifiable;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array
+     */
     protected $fillable = [
-        'tipo_empresa','razao_social', 'nome_fantasia', 'ramo', 'cnpj', 'email', 'site', 'ender_lograd',
-        'ender_num', 'ender_bairro', 'ender_compl', 'ender_estado', 'ender_cidade', 'ender_cep', 'telefone01',
-        'telefone02', 'email', 'site', 'tipo_identificacao', 'num_identificacao', 'inscr_estadual',
-        'qntdd_estagiarios', 'qntdd_colab', 'qntdd_colab_terc', 'seguradora', 'num_apolice', 'conveniada',
-        'cadastro_entregue', 'logomarca', 'termo_qntdd_meses', 'termo_data', 'repres_nome', 'repres_cargo',
-        'responsavel_rh_nome', 'responsavel_rh_email', 'responsavel_rh_tel'
+        'tipo_empresa', 'razao_social', 'nome_fantasia', 'ramo', 'ender_lograd', 'ender_num', 'ender_bairro',
+        'ender_compl', 'ender_estado', 'ender_cidade', 'ender_cep', 'telefone01', 'telefone02', 'email', 'password',
+        'site', 'tipo_identificacao', 'num_identificacao', 'inscr_estadual', 'qntdd_estagiarios', 'qntdd_colab',
+        'qntdd_colab_terc', 'seguradora', 'num_apolice', 'logomarca', 'termo_qntdd_meses',
+        'termo_data', 'repres_nome', 'repres_cargo', 'responsavel_rh_nome', 'responsavel_rh_email', 'responsavel_rh_tel',
+
     ];
+
+    /**
+     * The attributes that should be hidden for arrays.
+     *
+     * @var array
+     */
+    protected $hidden = [
+        'password', 'remember_token',
+    ];
+
+    /**
+     * Send the password reset notification.
+     *
+     * @param  string  $token
+     * @return void
+     */
+    public function zeroIfBlank($field){
+        return trim($field) !== '' ? $field : 0;
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new EmpresaResetPassword($token));
+    }
 
     public function setTelefone02Attribute($telefone02)
     {
@@ -45,8 +78,8 @@ class Empresa extends BaseModel {
         $this->attributes['termo_qntdd_meses'] = $this->zeroIfBlank($termo_qntdd_meses);
     }
 
-    public function setResponsavelRhTelAttribute($num_apolice)
+    public function setResponsavelRhTelAttribute($responsavel_rh_tel)
     {
-        $this->attributes['num_apolice'] = $this->zeroIfBlank($num_apolice);
+        $this->attributes['responsavel_rh_tel'] = $this->zeroIfBlank($responsavel_rh_tel);
     }
 }

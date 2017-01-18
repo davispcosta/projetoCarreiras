@@ -36,6 +36,21 @@ return [
     */
 
     'guards' => [
+        'empresa' => [
+            'driver' => 'session',
+            'provider' => 'empresas',
+        ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'admins',
+        ],
+
+        'aluno' => [
+            'driver' => 'session',
+            'provider' => 'alunos',
+        ],
+
         'web' => [
             'driver' => 'session',
             'provider' => 'users',
@@ -65,6 +80,21 @@ return [
     */
 
     'providers' => [
+        'empresas' => [
+            'driver' => 'eloquent',
+            'model' => App\Empresa::class,
+        ],
+
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Admin::class,
+        ],
+
+        'alunos' => [
+            'driver' => 'eloquent',
+            'model' => App\Aluno::class,
+        ],
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\User::class,
@@ -92,6 +122,24 @@ return [
     */
 
     'passwords' => [
+        'empresas' => [
+            'provider' => 'empresas',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'admins' => [
+            'provider' => 'admins',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
+        'alunos' => [
+            'provider' => 'alunos',
+            'table' => 'password_resets',
+            'expire' => 60,
+        ],
+
         'users' => [
             'provider' => 'users',
             'table' => 'password_resets',

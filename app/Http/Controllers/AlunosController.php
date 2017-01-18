@@ -38,8 +38,8 @@ class AlunosController extends Controller
     public function editar($id){
 
         $aluno = Aluno::findOrFail($id);
-
-        return view('alunos.registrar', ['aluno' => $aluno]);
+        $cursos = Curso::pluck('nome', 'id')->all();
+        return view('alunos.registrar', compact('aluno', 'cursos'));
     }
 
     public function atualizar($id, AlunoRequest $request){

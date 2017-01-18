@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Estagio;
 use App\Empresa;
 use App\Aluno;
+use Illuminate\Support\Facades\Redirect;
 
 use App\Http\Requests\EstagioRequest;
 
@@ -42,8 +43,10 @@ class EstagiosController extends Controller
     public function editar($id){
 
         $estagio = Estagio::findOrFail($id);
+        $empresas = Empresa::pluck('nome_fantasia', 'id')->all();
+        $alunos = Aluno::pluck('nome', 'id')->all();
 
-        return view('estagios.registrar', ['estagio' => $estagio]);
+        return view('estagios.registrar', compact('estagio', 'empresas', 'alunos'));
     }
 
     public function atualizar($id, EstagioRequest $request){

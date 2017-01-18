@@ -48,7 +48,7 @@
 
                             <div class="form-group {{ $errors->has('auxil_transp_valor') ? 'has-error' :'' }}">
                                 {!! Form::label('auxil_transp_valor', 'Valor do Auxílio Transporte') !!}
-                                {!! Form::input('number', 'bolsa_auxilio', null, ['class' => 'form-control', 'autofocus', ]) !!}
+                                {!! Form::input('number', 'auxil_transp_valor', null, ['class' => 'form-control', 'autofocus', ]) !!}
                                 {!! $errors->first('auxil_transp_valor','<span class="help-block">:message</span>') !!}
                             </div>
 
@@ -60,7 +60,7 @@
 
                             <div class="form-group {{ $errors->has('auxil_alim_valor') ? 'has-error' :'' }}">
                                 {!! Form::label('auxil_alim_valor', 'Valor do Auxílio Alimentação') !!}
-                                {!! Form::input('number', 'bolsa_auxilio', null, ['class' => 'form-control', 'autofocus', ]) !!}
+                                {!! Form::input('number', 'auxil_alim_valor', null, ['class' => 'form-control', 'autofocus', ]) !!}
                                 {!! $errors->first('auxil_alim_valor','<span class="help-block">:message</span>') !!}
                             </div>
 

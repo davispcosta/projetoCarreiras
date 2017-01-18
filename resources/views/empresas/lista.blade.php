@@ -17,15 +17,15 @@
 
                         <table class="table">
                             <th>Nome Fantasia</th>
-                            <th>Email</th>
-                            <th>Site</th>
+                            <th>Telefone</th>
+                            <th>Logradouro</th>
                             <th>Ações</th>
                             <tbody>
                                 @foreach($empresas as $empresa)
                                 <tr>
                                     <td>{{ $empresa->nome_fantasia }}</td>
-                                    <td>{{ $empresa->email }}</td>
-                                    <td>{{ $empresa->site }}</td>
+                                    <td>{{ $empresa->telefone01}}</td>
+                                    <td>{{ $empresa->ender_lograd}}</td>
                                     <td>
                                         <a href="/empresas/{{ $empresa->id }}/editar" class="btn btn-default btn-sm">Editar</a>
                                         {!! Form::open(['method' => 'DELETE', 'url' => '/empresas/'.$empresa->id, 'style' => 'display: inline;']) !!}

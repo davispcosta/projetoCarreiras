@@ -39,7 +39,70 @@ class RouteServiceProvider extends ServiceProvider
 
         $this->mapWebRoutes();
 
+        $this->mapEmpresaRoutes();
+
+        $this->mapAdminRoutes();
+
+        $this->mapAlunoRoutes();
+
         //
+    }
+
+    /**
+     * Define the "aluno" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAlunoRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'aluno', 'auth:aluno'],
+            'prefix' => 'aluno',
+            'as' => 'aluno.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/aluno.php');
+        });
+    }
+
+    /**
+     * Define the "admin" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapAdminRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'admin', 'auth:admin'],
+            'prefix' => 'admin',
+            'as' => 'admin.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/admin.php');
+        });
+    }
+
+    /**
+     * Define the "empresa" routes for the application.
+     *
+     * These routes all receive session state, CSRF protection, etc.
+     *
+     * @return void
+     */
+    protected function mapEmpresaRoutes()
+    {
+        Route::group([
+            'middleware' => ['web', 'empresa', 'auth:empresa'],
+            'prefix' => 'empresa',
+            'as' => 'empresa.',
+            'namespace' => $this->namespace,
+        ], function ($router) {
+            require base_path('routes/empresa.php');
+        });
     }
 
     /**

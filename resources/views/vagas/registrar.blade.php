@@ -24,13 +24,13 @@
 
                             <div class="form-group {{ $errors->has('empresa_id') ? 'has-error' :'' }}">
                                 {!! Form::label('empresa_id', 'Empresa') !!}
-                                {!! Form::select('empresa_id', $empresas, $vaga->empresa_id) !!}
+                                {!! Form::select('empresa_id', [null=>'Selecione uma empresa'] + $empresas, $vaga->empresa_id) !!}
                                 {!! $errors->first('empresa_id','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('tipo_estagio') ? 'has-error' :'' }}">
                                 {!! Form::label('tipo_estagio', 'Tipo de Estágio') !!}
-                                {!! Form::input('text', 'tipo_estagio', null, ['class' => 'form-control', 'autofocus', 'placeholder' => 'Tipo de Estágio'])  !!}
+                                {!! Form::select('tipo_estagio', array('Estágio', 'Emprego' ,'Trainee')) !!}
                                 {!! $errors->first('tipo_estagio','<span class="help-block">:message</span>') !!}
                             </div>
 

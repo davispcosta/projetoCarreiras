@@ -52,7 +52,7 @@ class CursosController extends Controller {
 
     public function deletar($id){
 
-        $curso = Aluno::findOrFail($id);
+        $curso = Curso::findOrFail($id);
 
         $curso->delete();
 

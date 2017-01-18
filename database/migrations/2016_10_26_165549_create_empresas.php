@@ -33,7 +33,8 @@ class CreateEmpresas extends Migration
             // --> Contatos <--
             $table->integer('telefone01');
             $table->integer('telefone02')->nullable();
-            $table->string('email')->nullable();
+            $table->string('email')->unique();
+            $table->string('password');
             $table->string('site')->nullable();
 
             $table->string('tipo_identificacao');
@@ -44,8 +45,6 @@ class CreateEmpresas extends Migration
             $table->integer('qntdd_colab_terc')->nullable();
             $table->string('seguradora')->nullable();
             $table->integer('num_apolice')->nullable();
-            $table->boolean('conveniada')->default(false);
-            $table->boolean('cadastro_entregue')->default(false);
             $table->string('logomarca')->nullable();
 
             // --> Termo de Compromisso <--

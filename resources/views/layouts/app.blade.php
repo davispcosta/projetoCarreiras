@@ -58,8 +58,9 @@
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @if (Auth::guest())
-                            <li><a href="{{ url('/login') }}">Entrar</a></li>
-                            <li><a href="{{ url('/register') }}">Cadastrar-se</a></li>
+                            <li><a href="{{ url('aluno/login') }}">Aluno</a></li>
+                            <li><a href="{{ url('empresa/login') }}">Empresa</a></li>
+                            <li><a href="{{ url('admin/login') }}">Admin</a></li>
                         @else
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
