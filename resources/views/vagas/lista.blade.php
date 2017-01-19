@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('empresa.layout.auth')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,9 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Vagas
-                        <a class="pull-right" href="{{ url('registrar-vaga') }}">Registrar Vaga</a>
+                        @if (!Auth::guard('aluno'))
+                            <a class="pull-right" href="{{ url('registrar-vaga') }}">Registrar Vaga</a>
+                        @endif
                     </div>
 
                     <div class="panel-body">

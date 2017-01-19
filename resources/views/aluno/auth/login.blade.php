@@ -57,6 +57,10 @@
                                 <a class="btn btn-link" href="{{ url('/aluno/password/reset') }}">
                                     Esqueceu sua senha?
                                 </a>
+
+                                <a class="btn btn-link" href="{{ url('/aluno/register') }}">
+                                    Cadastrar-se
+                                </a>
                             </div>
                         </div>
                     </form>

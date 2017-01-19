@@ -1,12 +1,18 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Estágios
-                        <a class="pull-right" href="{{ url('registrar-estagio') }}">Registrar Estágio</a>
+                    <div class="panel-heading">
+                        @if (Auth::guard('aluno'))
+                            Meus Estágios
+                            <a class="pull-right" href="{{ url('aluno/registrar-estagio') }}">Registrar Estágio</a>
+                        @else
+                            Estágios
+                        @endif
+
                     </div>
 
                     <div class="panel-body">
@@ -27,8 +33,8 @@
                                     <td>{{ $estagio->data_inicio }}</td>
                                     <td>{{ $estagio->data_termino }}</td>
                                     <td>
-                                        <a href="/estagios/{{ $estagio->id }}/editar" class="btn btn-default btn-sm">Editar</a>
-                                        {!! Form::open(['method' => 'DELETE', 'url' => '/estagios/'.$estagio->id, 'style' => 'display: inline;']) !!}
+                                        <a href="/aluno/estagios/{{ $estagio->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                        {!! Form::open(['method' => 'DELETE', 'url' => 'aluno/estagios/'.$estagio->id, 'style' => 'display: inline;']) !!}
                                         <button type="submit" class="btn btn-default btn-sm">Excluir</button>
                                         {!! Form::close() !!}
                                     </td>

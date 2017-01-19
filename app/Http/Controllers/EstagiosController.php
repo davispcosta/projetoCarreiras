@@ -7,7 +7,7 @@ use App\Estagio;
 use App\Empresa;
 use App\Aluno;
 use Illuminate\Support\Facades\Redirect;
-
+use Illuminate\Contracts\Auth\Guard;
 use App\Http\Requests\EstagioRequest;
 
 class EstagiosController extends Controller
@@ -34,9 +34,15 @@ class EstagiosController extends Controller
 
         $estagio = $estagio->create($request->all());
 
+        if (\Auth::guard('aluno')) {
+            $url = 'aluno/estagios';
+        }else{
+            $url = 'admin/estagios';
+        }
+
         \Session::flash('mensagem_sucesso','Estagio cadastrado com sucesso!');
 
-        return Redirect::to('/estagios');
+        return Redirect::to($url);
 
     }
 
@@ -55,9 +61,15 @@ class EstagiosController extends Controller
 
         $estagio->update($request->all());
 
+        if (\Auth::guard('aluno')) {
+            $url = 'aluno/estagios';
+        }else{
+            $url = 'admin/estagios';
+        }
+
         \Session::flash('mensagem_sucesso','Estágio atualizado com sucesso!');
 
-        return Redirect::to('estagios/'.$estagio->id.'/editar');
+        return Redirect::to($url);
 
     }
 
@@ -67,9 +79,14 @@ class EstagiosController extends Controller
 
         $estagio->delete();
 
+        if (\Auth::guard('aluno')) {
+            $url = 'aluno/estagios';
+        }else{
+            $url = 'admin/estagios';
+        }
+
         \Session::flash('mensagem_sucesso','Estágio deletado com sucesso!');
 
-        return Redirect::to('estagios'
-        );
+        return Redirect::to($url);
     }
 }

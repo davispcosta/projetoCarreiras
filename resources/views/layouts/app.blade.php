@@ -43,16 +43,6 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        @if (!Auth::guest())
-                              <li><a href="{{ url('/empresas') }}">Empresas</a></li>
-                              <li><a href="{{ url('/vagas') }}">Vagas</a></li>
-                              <li><a href="{{ url('/estagios') }}">Estagios</a></li>
-                              <li><a href="{{ url('/alunos') }}">Alunos</a></li>
-                              <li><a href="{{ url('/cursos') }}">Cursos</a></li>
-                        @endif
-                    </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">

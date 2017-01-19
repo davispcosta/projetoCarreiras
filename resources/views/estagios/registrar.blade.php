@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
@@ -6,15 +6,19 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe abaixo as informações do estagio
-                        <a class="pull-right" href="{{ url('/estagios') }}">Voltar à Lista</a>
+                        @if (Auth::guard('aluno'))
+                        <a class="pull-right" href="{{ url('aluno/estagios') }}">Voltar à Lista</a>
+                        @endif
                     </div>
 
                     <div class="panel-body">
 
                         @if(Request::is('*/editar'))
-                            {!! Form::model($estagio, ['method' => 'PATCH','url' => 'estagio/'.$estagio->id]) !!}
+                            {!! Form::model($estagio, ['method' => 'PATCH','url' => 'aluno/estagios/'.$estagio->id]) !!}
                         @else
-                            {!!  Form::open(['url' => '/salvar-estagio']) !!}
+                            @if (Auth::guard('aluno'))
+                            {!!  Form::open(['url' => 'aluno/salvar-estagio']) !!}
+                            @endif
                         @endif
 
 
@@ -22,11 +26,15 @@
                             <div class="alert alert-success">{{ Session::get('mensagem_sucesso') }}</div>
                         @endif
 
-                            <div class="form-group {{ $errors->has('aluno_id') ? 'has-error' :'' }}">
-                                {!! Form::label('aluno_id', 'Aluno') !!}
-                                {!! Form::select('aluno_id', $alunos, $estagio->aluno_id) !!}
-                                {!! $errors->first('aluno_id','<span class="help-block">:message</span>') !!}
-                            </div>
+                            @if (Auth::guard('aluno'))
+                                {!! $estagio->aluno_id = Auth::guard()->id() !!}
+                            @else
+                                <div class="form-group {{ $errors->has('aluno_id') ? 'has-error' :'' }}">
+                                    {!! Form::label('aluno_id', 'Aluno') !!}
+                                    {!! Form::select('aluno_id', $alunos, $estagio->aluno_id) !!}
+                                    {!! $errors->first('aluno_id','<span class="help-block">:message</span>') !!}
+                                </div>
+                            @endif
 
                             <div class="form-group {{ $errors->has('empresa_id') ? 'has-error' :'' }}">
                                 {!! Form::label('empresa_id', 'Empresa') !!}
@@ -66,32 +74,38 @@
 
                             <div class="form-group {{ $errors->has('data_inicio') ? 'has-error' :'' }}">
                                 {!! Form::label('data_inicio', 'Data Início') !!}
-                                {!! Form::text('data_inicio', '', array('class' => 'datepicker')) !!}
+                                {!! Form::input('text','data_inicio', null, ['class' => 'form-control', 'autofocus', ]) !!}
                                 {!! $errors->first('data_inicio','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('data_termino') ? 'has-error' :'' }}">
                                 {!! Form::label('data_termino', 'Data Término') !!}
-                                {!! Form::text('data_termino', '', array('class' => 'datepicker')) !!}
+                                {!! Form::input('text','data_termino', null, ['class' => 'form-control', 'autofocus', ]) !!}
                                 {!! $errors->first('data_termino','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('resicao') ? 'has-error' :'' }}">
+                                <div class="col-md-4">
                                 {!! Form::label('resicao', 'Resição') !!}
                                 {!! Form::checkbox('resicao', true, false, ['class' => 'form-control', '' ] ) !!}
                                 {!! $errors->first('resicao','<span class="help-block">:message</span>') !!}
+                                </div>
                             </div>
 
                             <div class="form-group {{ $errors->has('estagio_fechado') ? 'has-error' :'' }}">
+                                <div class="col-md-4">
                                 {!! Form::label('estagio_fechado', 'Estágio Fechado') !!}
                                 {!! Form::checkbox('estagio_fechado', true, false, ['class' => 'form-control', '' ] ) !!}
                                 {!! $errors->first('estagio_fechado','<span class="help-block">:message</span>') !!}
+                                </div>
                             </div>
 
                             <div class="form-group {{ $errors->has('termo_entregue') ? 'has-error' :'' }}">
+                                <div class="col-md-4">
                                 {!! Form::label('termo_entregue', 'Termo Entregue') !!}
                                 {!! Form::checkbox('termo_entregue', true, false, ['class' => 'form-control', '' ] ) !!}
                                 {!! $errors->first('termo_entregue','<span class="help-block">:message</span>') !!}
+                                </div>
                             </div>
 
                             {!! Form::submit('Salvar', ['class' => 'btn btn-primary pull-right']) !!}

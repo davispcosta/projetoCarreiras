@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => 'FA7 Carreiras',
+    'name' => 'UNI7 Carreiras',
 
     /*
     |--------------------------------------------------------------------------
