@@ -19,7 +19,7 @@ class EmpresasController extends Controller
 
     public function registrar() {
 
-        return view('empresas.registrar');
+        return view('empresa.auth.register');
     }
 
     public function salvar(EmpresaRequest $request) {
@@ -27,15 +27,21 @@ class EmpresasController extends Controller
         $empresa = new Empresa();
         $empresa = $empresa->create($request->all());
 
+        if (\Auth::getDefaultDriver() == 'empresa') {
+            $url = 'empresa/home';
+        }else{
+            $url = 'admin/empresas';
+        }
+
             \Session::flash('mensagem_sucesso','Empresa cadastrada com sucesso!');
-            return Redirect::to('/empresas');
+            return Redirect::to($url);
     }
 
     public function editar($id){
 
         $empresa = Empresa::findOrFail($id);
 
-        return view('empresas.registrar', ['empresa' => $empresa]);
+        return view('empresa.auth.register', ['empresa' => $empresa]);
     }
 
     public function atualizar($id, EmpresaRequest $request){
@@ -44,10 +50,15 @@ class EmpresasController extends Controller
 
         $empresa->update($request->all());
 
+        if (\Auth::getDefaultDriver() == 'empresa') {
+            $url = 'empresa/empresas/';
+        }else{
+            $url = 'admin/empresas/';
+        }
 
             \Session::flash('mensagem_sucesso','Empresa atualizada com sucesso!');
 
-            return Redirect::to('empresas/'.$empresa->id.'/editar');
+            return Redirect::to($url.$empresa->id.'/editar');
 
     }
 
@@ -57,9 +68,14 @@ class EmpresasController extends Controller
 
         $empresa->delete();
 
+        if (\Auth::getDefaultDriver() == 'empresa') {
+            $url = 'empresa/empresas';
+        }else{
+            $url = 'admin/empresas';
+        }
+
         \Session::flash('mensagem_sucesso','Empresa deletada com sucesso!');
 
-        return Redirect::to('empresas'
-        );
+        return Redirect::to($url);
     }
 }

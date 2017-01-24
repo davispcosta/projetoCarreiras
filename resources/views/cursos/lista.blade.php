@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Cursos
-                        <a class="pull-right" href="{{ url('registrar-curso') }}">Registrar Curso</a>
+                        <a class="pull-right" href="{{ url('admin/registrar-curso') }}">Registrar Curso</a>
                     </div>
 
                     <div class="panel-body">
@@ -23,8 +23,8 @@
                                 <tr>
                                     <td>{{ $curso->nome }}</td>
                                     <td>
-                                        <a href="/cursos/{{ $curso->id }}/editar" class="btn btn-default btn-sm">Editar</a>
-                                        {!! Form::open(['method' => 'DELETE', 'url' => '/cursos/'.$curso->id, 'style' => 'display: inline;']) !!}
+                                        <a href="/admin/cursos/{{ $curso->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                        {!! Form::open(['method' => 'DELETE', 'url' => 'admin/cursos/'.$curso->id, 'style' => 'display: inline;']) !!}
                                         <button type="submit" class="btn btn-default btn-sm">Excluir</button>
                                         {!! Form::close() !!}
                                     </td>

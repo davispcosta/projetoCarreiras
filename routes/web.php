@@ -17,27 +17,6 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
-Route::get('/empresas', 'EmpresasController@index');
-
-    Route::get('/registrar-empresa', 'EmpresasController@registrar');
-
-    Route::post('/salvar-empresa', 'EmpresasController@salvar');
-    Route::patch('/empresas/{empresa}', 'EmpresasController@atualizar');
-    Route::delete('/empresas/{empresa}', 'EmpresasController@deletar');
-
-    Route::get('/empresas/{empresa}/editar', 'EmpresasController@editar');
-
-Route::get('/cursos', 'CursosController@index');
-
-    Route::get('/registrar-curso', 'CursosController@registrar');
-
-    Route::post('/salvar-curso', 'CursosController@salvar');
-    Route::patch('/cursos/{curso}', 'CursosController@atualizar');
-    Route::delete('/cursos/{curso}', 'CursosController@deletar');
-
-    Route::get('/cursos/{curso}/editar', 'CursosController@editar');
-
-
 Route::group(['prefix' => 'aluno'], function () {
   Route::get('/login', 'AlunoAuth\LoginController@showLoginForm');
   Route::post('/login', 'AlunoAuth\LoginController@login');

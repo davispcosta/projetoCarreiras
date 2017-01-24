@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
@@ -6,7 +6,12 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Empresas
-                    <a class="pull-right" href="{{ url('registrar-empresa') }}">Registrar Empresa</a>
+                        @if (Auth::getDefaultDriver() == 'aluno')
+                        @elseif (Auth::getDefaultDriver() == 'empresa')
+                            <a class="pull-right" href="{{ url('empresa/registrar-empresa') }}">Registrar Empresa</a>
+                        @else
+                            <a class="pull-right" href="{{ url('admin/registrar-empresa') }}">Registrar Empresa</a>
+                        @endif
                     </div>
 
                     <div class="panel-body">
@@ -27,10 +32,12 @@
                                     <td>{{ $empresa->telefone01}}</td>
                                     <td>{{ $empresa->ender_lograd}}</td>
                                     <td>
-                                        <a href="/empresas/{{ $empresa->id }}/editar" class="btn btn-default btn-sm">Editar</a>
-                                        {!! Form::open(['method' => 'DELETE', 'url' => '/empresas/'.$empresa->id, 'style' => 'display: inline;']) !!}
-                                        <button type="submit" class="btn btn-default btn-sm">Excluir</button>
-                                        {!! Form::close() !!}
+                                       @if (Auth::getDefaultDriver() == 'admin')
+                                            <a href="/admin/empresas/{{ $empresa->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                            {!! Form::open(['method' => 'DELETE', 'url' => 'admin/empresas/'.$empresa->id, 'style' => 'display: inline;']) !!}
+                                            <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                            {!! Form::close() !!}
+                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

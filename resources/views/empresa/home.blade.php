@@ -1,4 +1,4 @@
-@extends('empresa.layout.auth')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in as Empresa!
+                    Bem vindo Empresa!
                 </div>
             </div>
         </div>

@@ -6,18 +6,26 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe abaixo as informações do estagio
-                        @if (Auth::guard('aluno'))
+                        @if (Auth::getDefaultDriver() == 'aluno')
                         <a class="pull-right" href="{{ url('aluno/estagios') }}">Voltar à Lista</a>
+                        @else
+                        <a class="pull-right" href="{{ url('admin/estagios') }}">Voltar à Lista</a>
                         @endif
                     </div>
 
                     <div class="panel-body">
 
                         @if(Request::is('*/editar'))
+                            @if (Auth::getDefaultDriver() == 'aluno')
                             {!! Form::model($estagio, ['method' => 'PATCH','url' => 'aluno/estagios/'.$estagio->id]) !!}
+                            @else
+                            {!! Form::model($estagio, ['method' => 'PATCH','url' => 'admin/estagios/'.$estagio->id]) !!}
+                            @endif
                         @else
-                            @if (Auth::guard('aluno'))
+                            @if (Auth::getDefaultDriver() == 'aluno')
                             {!!  Form::open(['url' => 'aluno/salvar-estagio']) !!}
+                            @else
+                            {!!  Form::open(['url' => 'admin/salvar-estagio']) !!}
                             @endif
                         @endif
 
@@ -26,8 +34,8 @@
                             <div class="alert alert-success">{{ Session::get('mensagem_sucesso') }}</div>
                         @endif
 
-                            @if (Auth::guard('aluno'))
-                                {!! $estagio->aluno_id = Auth::guard()->id() !!}
+                            @if (Auth::getDefaultDriver() == 'aluno')
+                                {{ $estagio->aluno_id = Auth::guard()->id() }}
                             @else
                                 <div class="form-group {{ $errors->has('aluno_id') ? 'has-error' :'' }}">
                                     {!! Form::label('aluno_id', 'Aluno') !!}
@@ -50,7 +58,7 @@
 
                             <div class="form-group {{ $errors->has('auxil_transp_freq') ? 'has-error' :'' }}">
                                 {!! Form::label('auxil_transp_freq', 'Frequência do Auxílio Transporte') !!}
-                                {!! Form::input('text', 'auxil_transp_freq', null, ['class' => 'form-control', '', 'placeholder' => 'Frequência do Auxílio Transporte'])  !!}
+                                {!! Form::input('text', 'auxil_transp_freq', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('auxil_transp_freq','<span class="help-block">:message</span>') !!}
                             </div>
 
@@ -62,7 +70,7 @@
 
                             <div class="form-group {{ $errors->has('auxil_alim_freq') ? 'has-error' :'' }}">
                                 {!! Form::label('auxil_alim_freq', 'Frequência do Auxílio Alimentação') !!}
-                                {!! Form::input('text', 'auxil_alim_freq', null, ['class' => 'form-control', '', 'placeholder' => 'Frequência do Auxílio Alimentação'])  !!}
+                                {!! Form::input('text', 'auxil_alim_freq', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('auxil_alim_freq','<span class="help-block">:message</span>') !!}
                             </div>
 

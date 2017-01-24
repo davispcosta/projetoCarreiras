@@ -30,8 +30,16 @@ class VagasController extends Controller
         $vaga = new Vaga();
         $vaga = $vaga->create($request->all());
 
+        if (\Auth::getDefaultDriver() == 'empresa') {
+            $url = 'empresa/vagas';
+        }else{
+            $url = 'admin/vagas';
+        }
+
+
         \Session::flash('mensagem_sucesso','Vaga cadastrada com sucesso!');
-        return Redirect::to('/vagas');
+
+        return Redirect::to($url);
 
     }
 
@@ -52,7 +60,13 @@ class VagasController extends Controller
 
         \Session::flash('mensagem_sucesso','Vaga atualizada com sucesso!');
 
-        return Redirect::to('vagas/'.$vaga->id.'/editar');
+        if (\Auth::getDefaultDriver() == 'empresa') {
+            $url = 'empresa/vagas/';
+        }else{
+            $url = 'admin/vagas/';
+        }
+
+        return Redirect::to($url.$vaga->id.'/editar');
 
     }
 
@@ -62,9 +76,13 @@ class VagasController extends Controller
 
         $vaga->delete();
 
+        if (\Auth::getDefaultDriver() == 'empresa') {
+            $url = 'empresa/vagas';
+        }else{
+            $url = 'admin/vagas';
+        }
         \Session::flash('mensagem_sucesso','Vaga deletada com sucesso!');
 
-        return Redirect::to('vagas'
-        );
+        return Redirect::to($url);
     }
 }

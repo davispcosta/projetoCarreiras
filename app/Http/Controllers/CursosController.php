@@ -27,7 +27,7 @@ class CursosController extends Controller {
         $curso = $curso->create($request->all());
 
         \Session::flash('mensagem_sucesso','Curso cadastrado com sucesso!');
-        return Redirect::to('/cursos');
+        return Redirect::to('admin/cursos');
     }
 
     public function editar($id){
@@ -46,7 +46,7 @@ class CursosController extends Controller {
 
         \Session::flash('mensagem_sucesso','Curso atualizado com sucesso!');
 
-        return Redirect::to('cursos/'.$curso->id.'/editar');
+        return Redirect::to('admin/cursos/'.$curso->id.'/editar');
 
     }
 
@@ -58,6 +58,6 @@ class CursosController extends Controller {
 
         \Session::flash('mensagem_sucesso','Curso deletado com sucesso!');
 
-        return Redirect::to('cursos');
+        return Redirect::to('admin/cursos');
     }
 }

@@ -1,4 +1,4 @@
-@extends('empresa.layout.auth')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
@@ -6,8 +6,12 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Vagas
-                        @if (!Auth::guard('aluno'))
-                            <a class="pull-right" href="{{ url('registrar-vaga') }}">Registrar Vaga</a>
+                        @if (Auth::getDefaultDriver() == 'aluno')
+                        @elseif (Auth::getDefaultDriver() == 'empresa')
+                            <a class="pull-right" href="{{ url('empresa/registrar-vaga') }}">Registrar Vaga</a>
+
+                        @else
+                            <a class="pull-right" href="{{ url('admin/registrar-vaga') }}">Registrar Vaga</a>
                         @endif
                     </div>
 
@@ -21,19 +25,30 @@
                             <th>Tipo de Estagio</th>
                             <th>Titulo</th>
                             <th>Cargo</th>
+                            @if (Auth::getDefaultDriver() != 'aluno')
                             <th>Ações</th>
+                            @endif
                             <tbody>
                             @foreach($vagas as $vaga)
                                 <tr>
                                     <td>{{ $vaga->tipo_estagio }}</td>
                                     <td>{{ $vaga->titulo }}</td>
                                     <td>{{ $vaga->cargo }}</td>
+                                    @if (Auth::getDefaultDriver() != 'aluno')
                                     <td>
-                                        <a href="/vagas/{{ $vaga->id }}/editar" class="btn btn-default btn-sm">Editar</a>
-                                        {!! Form::open(['method' => 'DELETE', 'url' => '/vagas/'.$vaga->id, 'style' => 'display: inline;']) !!}
-                                        <button type="submit" class="btn btn-default btn-sm">Excluir</button>
-                                        {!! Form::close() !!}
+                                        @if (Auth::getDefaultDriver() == 'admin')
+                                          <a href="/admin/vagas/{{ $vaga->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                          {!! Form::open(['method' => 'DELETE', 'url' => 'admin/vagas/'.$vaga->id, 'style' => 'display: inline;']) !!}
+                                          <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                          {!! Form::close() !!}
+                                        @elseif (Auth::getDefaultDriver() == 'empresa')
+                                          <a href="/empresa/vagas/{{ $vaga->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                          {!! Form::open(['method' => 'DELETE', 'url' => 'empresa/vagas/'.$vaga->id, 'style' => 'display: inline;']) !!}
+                                          <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                          {!! Form::close() !!}
+                                        @endif
                                     </td>
+                                    @endif
                                 </tr>
                             @endforeach
                             </tbody>

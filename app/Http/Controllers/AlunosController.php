@@ -23,7 +23,7 @@ class AlunosController extends Controller
         $aluno = new Aluno();
         $cursos = Curso::pluck('nome', 'id')->all();
 
-        return view('alunos.registrar', compact('aluno', 'cursos'));
+        return view('aluno.auth.register', compact('aluno', 'cursos'));
     }
 
     public function salvar(AlunoRequest $request) {
@@ -39,7 +39,7 @@ class AlunosController extends Controller
 
         $aluno = Aluno::findOrFail($id);
         $cursos = Curso::pluck('nome', 'id')->all();
-        return view('alunos.registrar', compact('aluno', 'cursos'));
+        return view('aluno.auth.register', compact('aluno', 'cursos'));
     }
 
     public function atualizar($id, AlunoRequest $request){

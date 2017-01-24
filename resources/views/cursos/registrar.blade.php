@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
@@ -6,15 +6,15 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe abaixo as informações do curso
-                        <a class="pull-right" href="{{ url('/cursos') }}">Voltar à Lista</a>
+                        <a class="pull-right" href="{{ url('admin/cursos') }}">Voltar à Lista</a>
                     </div>
 
                     <div class="panel-body">
 
                         @if(Request::is('*/editar'))
-                            {!! Form::model($curso, ['method' => 'PATCH','url' => 'curso/'.$curso->id]) !!}
+                            {!! Form::model($curso, ['method' => 'PATCH','url' => 'admin/cursos/'.$curso->id]) !!}
                         @else
-                            {!!  Form::open(['url' => '/salvar-curso']) !!}
+                            {!!  Form::open(['url' => 'admin/salvar-curso']) !!}
                         @endif
 
 

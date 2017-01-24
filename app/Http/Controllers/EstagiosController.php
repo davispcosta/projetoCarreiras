@@ -34,7 +34,7 @@ class EstagiosController extends Controller
 
         $estagio = $estagio->create($request->all());
 
-        if (\Auth::guard('aluno')) {
+        if (\Auth::getDefaultDriver() == 'aluno') {
             $url = 'aluno/estagios';
         }else{
             $url = 'admin/estagios';
@@ -61,7 +61,7 @@ class EstagiosController extends Controller
 
         $estagio->update($request->all());
 
-        if (\Auth::guard('aluno')) {
+        if (\Auth::getDefaultDriver() == 'aluno') {
             $url = 'aluno/estagios';
         }else{
             $url = 'admin/estagios';
@@ -79,7 +79,7 @@ class EstagiosController extends Controller
 
         $estagio->delete();
 
-        if (\Auth::guard('aluno')) {
+        if (\Auth::getDefaultDriver() =='aluno') {
             $url = 'aluno/estagios';
         }else{
             $url = 'admin/estagios';

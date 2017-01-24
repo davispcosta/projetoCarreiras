@@ -6,15 +6,27 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Informe abaixo as informações da vaga
-                        <a class="pull-right" href="{{ url('/vagas') }}">Voltar à Lista</a>
+                        @if (Auth::getDefaultDriver() == 'empresa')
+                        <a class="pull-right" href="{{ url('empresa/vagas') }}">Voltar à Lista</a>
+                        @else
+                        <a class="pull-right" href="{{ url('admin/vagas') }}">Voltar à Lista</a>
+                        @endif
                     </div>
 
                     <div class="panel-body">
 
                         @if(Request::is('*/editar'))
-                            {!! Form::model($vaga, ['method' => 'PATCH','url' => 'vaga/'.$vaga->id]) !!}
+                            @if (Auth::getDefaultDriver() == 'empresa')
+                                {!! Form::model($vaga, ['method' => 'PATCH','url' => '/empresa/vagas/'.$vaga->id]) !!}
+                            @else
+                                {!! Form::model($vaga, ['method' => 'PATCH','url' => '/admin/vagas/'.$vaga->id]) !!}
+                            @endif
                         @else
-                            {!!  Form::open(['url' => '/salvar-vaga']) !!}
+                            @if (Auth::getDefaultDriver() == 'empresa')
+                            {!!  Form::open(['url' => 'empresa/salvar-vaga']) !!}
+                            @else
+                            {!!  Form::open(['url' => 'admin/salvar-vaga']) !!}
+                            @endif
                         @endif
 
 
@@ -36,31 +48,31 @@
 
                             <div class="form-group {{ $errors->has('titulo') ? 'has-error' :'' }}">
                                 {!! Form::label('titulo', 'Título') !!}
-                                {!! Form::input('text', 'titulo', null, ['class' => 'form-control', '', 'placeholder' => 'Título'])  !!}
+                                {!! Form::input('text', 'titulo', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('titulo','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('cargo') ? 'has-error' :'' }}">
                                 {!! Form::label('cargo', 'Cargo') !!}
-                                {!! Form::input('text', 'cargo', null, ['class' => 'form-control', '', 'placeholder' => 'Cargo'])  !!}
+                                {!! Form::input('text', 'cargo', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('cargo','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('descricao') ? 'has-error' :'' }}">
                                 {!! Form::label('descricao', 'Descrição') !!}
-                                {!! Form::input('text', 'descricao', null, ['class' => 'form-control', '', 'placeholder' => 'Descrição'])  !!}
+                                {!! Form::input('text', 'descricao', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('descricao','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('data_publicacao') ? 'has-error' :'' }}">
                                 {!! Form::label('data_publicacao', 'Data de Publicação') !!}
-                                {!! Form::text('data_publicacao', '', array('class' => 'datepicker')) !!}
+                                {!! Form::input('text', 'data_publicacao', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('data_publicacao','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('data_final') ? 'has-error' :'' }}">
                                 {!! Form::label('data_final', 'Data Final') !!}
-                                {!! Form::text('data_final', '', array('id' => 'datepicker', 'class' => 'hasDatepicker')) !!}
+                                {!! Form::input('text', 'data_final', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
                                 {!! $errors->first('data_final','<span class="help-block">:message</span>') !!}
                             </div>
 

@@ -1,13 +1,32 @@
-@extends('empresa.layout.auth')
+@extends('layouts.auth')
 
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+                <div class="panel-heading">Informe abaixo as informações da empresa
+                    @if (Auth::getDefaultDriver() == 'empresa')
+                        <a class="pull-right" href="{{ url('empresa/empresas') }}">Voltar à Lista</a>
+                    @else
+                        <a class="pull-right" href="{{ url('admin/empresas') }}">Voltar à Lista</a>
+                    @endif</div>
+
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/empresa/register') }}">
+
+                    @if(Request::is('*/editar'))
+                        @if (Auth::getDefaultDriver() == 'empresa')
+                            {!! Form::model($empresa, ['method' => 'PATCH','url' => '/empresa/empresas/'.$empresa->id]) !!}
+                        @else
+                            {!! Form::model($empresa, ['method' => 'PATCH','url' => '/admin/empresas/'.$empresa->id]) !!}
+                        @endif
+                    @else
+                        @if (Auth::getDefaultDriver() == 'guest')
+                            {!!  Form::open(['url' => 'empresa/salvar-empresa']) !!}
+                        @else
+                            {!!  Form::open(['url' => 'admin/salvar-empresa']) !!}
+                        @endif
+                    @endif
                         {{ csrf_field() }}
 
                         <div class="form-group {{ $errors->has('tipo_empresa') ? 'has-error' :'' }}">
@@ -95,19 +114,19 @@
                         </div>
 
                         <div class="form-group {{ $errors->has('email') ? 'has-error' :'' }}">
-                            {!! Form::label('email', 'Email') !!}
+                            {!! Form::label('email', '(obrig.) Email') !!}
                             {!! Form::input('text', 'email', null, ['class' => 'form-control'])  !!}
                             {!! $errors->first('email','<span class="help-block">:message</span>') !!}
                         </div>
 
                         <div class="form-group {{ $errors->has('password') ? 'has-error' :'' }}">
-                            {!! Form::label('password', 'Senha') !!}
+                            {!! Form::label('password', '(obrig.) Senha') !!}
                             {!! Form::input('text', 'password', null, ['class' => 'form-control'])  !!}
                             {!! $errors->first('password','<span class="help-block">:message</span>') !!}
                         </div>
 
                         <div class="form-group {{ $errors->has('password_confirmation') ? 'has-error' :'' }}">
-                            {!! Form::label('password_confirmation', 'Confirmar Senha') !!}
+                            {!! Form::label('password_confirmation', '(obrig.) Confirmar Senha') !!}
                             {!! Form::input('text', 'password_confirmation', null, ['class' => 'form-control'])  !!}
                             {!! $errors->first('password_confirmation','<span class="help-block">:message</span>') !!}
                         </div>
@@ -119,13 +138,13 @@
                         </div>
 
                         <div class="form-group {{ $errors->has('tipo_identificacao') ? 'has-error' :'' }}">
-                            {!! Form::label('tipo_identificacao', 'Tipo de Identificação') !!}
+                            {!! Form::label('tipo_identificacao', '(obrig.) Tipo de Identificação') !!}
                             {!! Form::input('text', 'tipo_identificacao', null, ['class' => 'form-control'])  !!}
                             {!! $errors->first('tipo_identificacao','<span class="help-block">:message</span>') !!}
                         </div>
 
                         <div class="form-group {{ $errors->has('num_identificacao') ? 'has-error' :'' }}">
-                            {!! Form::label('num_identificacao', 'Número da Identificação') !!}
+                            {!! Form::label('num_identificacao', '(obrig.) Número da Identificação') !!}
                             {!! Form::input('text', 'num_identificacao', null, ['class' => 'form-control'])  !!}
                             {!! $errors->first('num_identificacao','<span class="help-block">:message</span>') !!}
                         </div>
@@ -215,11 +234,10 @@
                             {!! $errors->first('responsavel_rh_tel','<span class="help-block">:message</span>') !!}
                         </div>
 
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Register
+                                    Salvar
                                 </button>
                             </div>
                         </div>

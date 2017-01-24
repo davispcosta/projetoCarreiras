@@ -16,74 +16,123 @@
     <!-- Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
-                'csrfToken' => csrf_token(),
+            'csrfToken' => csrf_token(),
         ]); ?>
     </script>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-static-top">
-    <div class="container">
-        <div class="navbar-header">
+    <nav class="navbar navbar-default navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
 
-            <!-- Collapsed Hamburger -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                <span class="sr-only">Toggle Navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+                <!-- Collapsed Hamburger -->
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
 
-            <!-- Branding Image -->
-            <a class="navbar-brand" href="{{ url('/home') }}">
-                @if (Auth::guard('aluno'))
-                    {{ config('app.name', 'Laravel Multi Auth Guard') }}: Aluno
-                @endif
-            </a>
-        </div>
+                <!-- Branding Image -->
+                <a class="navbar-brand" href="{{ url('/home') }}">
 
-        <div class="collapse navbar-collapse" id="app-navbar-collapse">
-            <!-- Left Side Of Navbar -->
-            <ul class="nav navbar-nav">
-                &nbsp;
-            </ul>
+                    {{ config('app.name', 'Laravel Multi Auth Guard') }}
 
-            <!-- Right Side Of Navbar -->
-            <ul class="nav navbar-nav navbar-right">
-                <!-- Authentication Links -->
+                </a>
+            </div>
 
-                @if (Auth::guard('aluno'))
+            <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                <!-- Left Side Of Navbar -->
+                <ul class="nav navbar-nav">
+                    &nbsp;
+                </ul>
 
-                    <li><a href="{{ url('aluno/estagios') }}">Estagios</a></li>
-                    <li><a href="{{ url('aluno/vagas') }}">Vagas</a></li>
+                <!-- Right Side Of Navbar -->
+                <ul class="nav navbar-nav navbar-right">
+                    <!-- Authentication Links -->
+                    @if (Auth::guest())
 
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                            {{ Auth::user()->name }} <span class="caret"></span>
-                        </a>
+                    @elseif (Auth::getDefaultDriver() == 'aluno')
+                        <li><a href="{{ url('aluno/estagios') }}">Estagios</a></li>
+                        <li><a href="{{ url('aluno/vagas') }}">Vagas</a></li>
 
-                        <ul class="dropdown-menu" role="menu">
-                            <li>
-                                <a href="{{ url('/aluno/logout') }}"
-                                   onclick="event.preventDefault();
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/aluno/logout') }}"
+                                        onclick="event.preventDefault();
                                                  document.getElementById('logout-form').submit();">
-                                    Sair
-                                </a>
+                                        Sair
+                                    </a>
 
-                                <form id="logout-form" action="{{ url('/aluno/logout') }}" method="POST" style="display: none;">
-                                    {{ csrf_field() }}
-                                </form>
-                            </li>
-                        </ul>
-                    </li>
-                @endif
-            </ul>
+                                    <form id="logout-form" action="{{ url('/aluno/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                     @elseif (Auth::getDefaultDriver() == 'empresa')
+                        <li><a href="{{ url('empresa/vagas') }}">Vagas</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/empresa/logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Sair
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/empresa/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+                    @elseif (Auth::getDefaultDriver() == 'admin')
+                        <li><a href="{{ url('admin/vagas') }}">Vagas</a></li>
+                        <li><a href="{{ url('admin/alunos') }}">Alunos</a></li>
+                        <li><a href="{{ url('admin/empresas') }}">Empresas</a></li>
+                        <li><a href="{{ url('admin/estagios') }}">Estágios</a></li>
+                        <li><a href="{{ url('admin/cursos') }}">Cursos</a></li>
+
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="{{ url('/empresa/logout') }}"
+                                       onclick="event.preventDefault();
+                                                 document.getElementById('logout-form').submit();">
+                                        Sair
+                                    </a>
+
+                                    <form id="logout-form" action="{{ url('/empresa/logout') }}" method="POST" style="display: none;">
+                                        {{ csrf_field() }}
+                                    </form>
+                                </li>
+                            </ul>
+                        </li>
+
+                    @endif
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-@yield('content')
+    @yield('content')
 
-<!-- Scripts -->
-<script src="/js/app.js"></script>
+    <!-- Scripts -->
+    <script src="/js/app.js"></script>
 </body>
 </html>
