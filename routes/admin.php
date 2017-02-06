@@ -57,7 +57,6 @@ Route::get('/cursos', 'CursosController@index');
 
 
 
-
 Route::get('/alunos', 'AlunosController@index');
 
     Route::get('/registrar-aluno', 'AlunosController@registrar');
@@ -68,3 +67,14 @@ Route::get('/alunos', 'AlunosController@index');
 
     Route::get('/alunos/{aluno}/editar', 'AlunosController@editar');
 
+
+
+Route::get('/comunicados', 'ComunicadosController@index');
+
+    Route::get('/registrar-comunicado', 'ComunicadosController@registrar');
+
+    Route::post('/salvar-comunicado', 'ComunicadosController@salvar');
+    Route::patch('/comunicados/{comunicado}', 'ComunicadosController@atualizar');
+    Route::delete('/comunicados/{comunicado}', 'ComunicadosController@deletar');
+
+    Route::get('/comunicados/{comunicado}/editar', 'ComunicadosController@editar');

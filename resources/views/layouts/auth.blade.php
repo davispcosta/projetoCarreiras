@@ -12,8 +12,10 @@
 
     <!-- Styles -->
     <link href="/css/app.css" rel="stylesheet">
+    <link href="/css/style.css" rel="stylesheet">
 
-    <!-- Scripts -->
+    <!--
+    Scripts -->
     <script>
         window.Laravel = <?php echo json_encode([
             'csrfToken' => csrf_token(),
@@ -53,7 +55,7 @@
                     @if (Auth::guest())
 
                     @elseif (Auth::getDefaultDriver() == 'aluno')
-                        <li><a href="{{ url('aluno/estagios') }}">Estagios</a></li>
+                        <li><a href="{{ url('aluno') }}">Estagios</a></li>
                         <li><a href="{{ url('aluno/vagas') }}">Vagas</a></li>
 
                         <li class="dropdown">
@@ -98,6 +100,7 @@
                             </ul>
                         </li>
                     @elseif (Auth::getDefaultDriver() == 'admin')
+                        <li><a href="{{ url('admin/comunicados') }}">Comunicados</a></li>
                         <li><a href="{{ url('admin/vagas') }}">Vagas</a></li>
                         <li><a href="{{ url('admin/alunos') }}">Alunos</a></li>
                         <li><a href="{{ url('admin/empresas') }}">Empresas</a></li>
@@ -134,5 +137,17 @@
 
     <!-- Scripts -->
     <script src="/js/app.js"></script>
-</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/3/jquery.inputmask.bundle.js"></script>
+
+
+    <script>
+        $(":input").inputmask();
+
+        $(".dateinput").inputmask({"mask": "99/99/9999"});
+        $(".phoneinput").inputmask({"mask": "(99) 9999-99999"});
+        $(".cpfinput").inputmask({"mask": "999.999.999-99"});
+    </script>
+
+  </body>
 </html>

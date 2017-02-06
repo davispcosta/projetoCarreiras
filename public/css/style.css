@@ -1,0 +1,105 @@
+
+/**
+    BASE
+**/
+
+body {
+    min-height: 100vh;
+    background-color: white;
+}
+
+#app {
+    background-color: white;
+}
+
+.navbar {
+    background-color: #004f9b;
+    border-bottom: solid #fecd68 4px;
+}
+
+.nav li a, .navbar-brand {
+    color: whitesmoke !important;
+    font-weight: 700;
+}
+
+.panel-heading{
+    font-weight: 700;
+    font-size: 26px;
+}
+
+.panel-heading a{
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.panel-heading a:hover{
+    text-decoration: none;
+}
+
+/**
+    TABLES
+**/
+
+.table, .table > tbody > tr > th {
+    border-collapse: separate;
+    border-top: 0px;
+    text-align: center;
+
+}
+
+.table-title {
+    color: #004f9b;
+}
+
+.btn-delete, .btn-edit, .btn-save {
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.btn-edit, .btn-edit:hover {
+    background-color: #ffa000;
+    color: whitesmoke;
+}
+
+.btn-delete, .btn-delete:hover {
+    background-color: #d32f2f;
+    color: whitesmoke;
+}
+
+/**
+    FORMS
+**/
+
+.form-input {
+    height: 30px;
+    width: 80%;
+}
+
+.btn-save {
+   background-color: #004f9b;
+   color: whitesmoke;
+   margin-top: 30px;
+   padding: 10px 60px;
+}
+
+.checkbox-group {
+    display: inline-block;
+}
+
+#resicao, #estagio_fechado, #termo_entregue {
+    width: 20%;
+    float: left;
+    margin: 0px 10px;
+}
+
+.checkbox-group label {
+    float: left;
+}
+
+/**
+    HOME
+**/
+
+.home-text-span {
+    font-weight: 900;
+}

@@ -16,16 +16,16 @@
                         @endif
 
                         <table class="table">
-                            <th>Nome</th>
-                            <th>Ações</th>
+                            <th class="table-title">Nome</th>
+                            <th class="table-title">Ações</th>
                             <tbody>
                             @foreach($cursos as $curso)
                                 <tr>
                                     <td>{{ $curso->nome }}</td>
                                     <td>
-                                        <a href="/admin/cursos/{{ $curso->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                        <a href="/admin/cursos/{{ $curso->id }}/editar" class="btn btn-edit btn-sm">Editar</a>
                                         {!! Form::open(['method' => 'DELETE', 'url' => 'admin/cursos/'.$curso->id, 'style' => 'display: inline;']) !!}
-                                        <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                        <button type="submit" class="btn btn-delete btn-sm">Excluir</button>
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>

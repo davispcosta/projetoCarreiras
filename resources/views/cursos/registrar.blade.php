@@ -12,7 +12,7 @@
                     <div class="panel-body">
 
                         @if(Request::is('*/editar'))
-                            {!! Form::model($curso, ['method' => 'PATCH','url' => 'admin/cursos/'.$curso->id]) !!}
+                            {!! Form::model($curso, ['method' => 'PATCH','url' => 'admin'.$curso->id]) !!}
                         @else
                             {!!  Form::open(['url' => 'admin/salvar-curso']) !!}
                         @endif
@@ -28,7 +28,7 @@
                                 {!! $errors->first('nome','<span class="help-block">:message</span>') !!}
                             </div>
 
-                        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                        {!! Form::submit('Salvar', ['class' => 'btn btn-save btn-primary']) !!}
 
                         {!! Form::close() !!}
                     </div>

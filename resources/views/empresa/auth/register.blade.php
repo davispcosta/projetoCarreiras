@@ -7,7 +7,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Informe abaixo as informações da empresa
                     @if (Auth::getDefaultDriver() == 'empresa')
-                        <a class="pull-right" href="{{ url('authempresa') }}">Voltar à Lista</a>
+                        <a class="pull-right" href="{{ url('empresa') }}">Voltar à Lista</a>
                     @else
                         <a class="pull-right" href="{{ url('admin/empresas') }}">Voltar à Lista</a>
                     @endif</div>

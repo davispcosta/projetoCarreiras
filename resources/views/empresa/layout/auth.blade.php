@@ -66,7 +66,7 @@
                                         Sair
                                     </a>
 
-                                    <form id="logout-form" action="{{ url('authempresa') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ url('empresa') }}" method="POST" style="display: none;">
                                         {{ csrf_field() }}
                                     </form>
                                 </li>

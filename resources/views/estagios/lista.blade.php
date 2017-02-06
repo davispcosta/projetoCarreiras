@@ -23,10 +23,10 @@
                         @endif
 
                         <table class="table">
-                            <th>Bolsa Auxilio</th>
-                            <th>Data Inicio</th>
-                            <th>Data Termino</th>
-                            <th>Ações</th>
+                            <th class="table-title">Bolsa Auxilio</th>
+                            <th class="table-title">Data Inicio</th>
+                            <th class="table-title">Data Termino</th>
+                            <th class="table-title">Ações</th>
                             <tbody>
                             @foreach($estagios as $estagio)
                                 <tr>
@@ -35,14 +35,14 @@
                                     <td>{{ $estagio->data_termino }}</td>
                                     <td>
                                         @if (Auth::getDefaultDriver() == 'aluno')
-                                            <a href="/aluno/estagios/{{ $estagio->id }}/editar" class="btn btn-default btn-sm">Editar</a>
-                                            {!! Form::open(['method' => 'DELETE', 'url' => 'aluno/estagios/'.$estagio->id, 'style' => 'display: inline;']) !!}
-                                            <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                            <a href="/aluno/estagios/{{ $estagio->id }}/editar" class="btn btn-edit btn-sm">Editar</a>
+                                            {!! Form::open(['method' => 'DELETE', 'url' => 'authaluno'.$estagio->id, 'style' => 'display: inline;']) !!}
+                                            <button type="submit" class="btn btn-delete btn-sm">Excluir</button>
                                             {!! Form::close() !!}
                                         @else
-                                            <a href="/admin/estagios/{{ $estagio->id }}/editar" class="btn btn-default btn-sm">Editar</a>
-                                            {!! Form::open(['method' => 'DELETE', 'url' => 'admin/estagios/'.$estagio->id, 'style' => 'display: inline;']) !!}
-                                            <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                            <a href="/admin/estagios/{{ $estagio->id }}/editar" class="btn btn-edit btn-sm">Editar</a>
+                                            {!! Form::open(['method' => 'DELETE', 'url' => 'admin'.$estagio->id, 'style' => 'display: inline;']) !!}
+                                            <button type="submit" class="btn btn-delete btn-sm">Excluir</button>
                                             {!! Form::close() !!}
                                         @endif
                                     </td>

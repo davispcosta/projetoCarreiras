@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
     <div class="container">
@@ -35,49 +35,49 @@
                         @endif
 
                             <div class="form-group {{ $errors->has('empresa_id') ? 'has-error' :'' }}">
-                                {!! Form::label('empresa_id', 'Empresa') !!}
+                                {!! Form::label('empresa_id', 'Empresa') !!} <br>
                                 {!! Form::select('empresa_id', [null=>'Selecione uma empresa'] + $empresas, $vaga->empresa_id) !!}
                                 {!! $errors->first('empresa_id','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('tipo_estagio') ? 'has-error' :'' }}">
-                                {!! Form::label('tipo_estagio', 'Tipo de Estágio') !!}
-                                {!! Form::select('tipo_estagio', array('Estágio', 'Emprego' ,'Trainee')) !!}
+                                {!! Form::label('tipo_estagio', 'Tipo de Estágio') !!} <br>
+                                {!! Form::select('tipo_estagio', [null=>'Selecione um tipo'] + array('Estágio' => 'Estágio', 'Emprego' => 'Emprego' , 'Trainee' =>'Trainee')) !!}
                                 {!! $errors->first('tipo_estagio','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('titulo') ? 'has-error' :'' }}">
                                 {!! Form::label('titulo', 'Título') !!}
-                                {!! Form::input('text', 'titulo', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
+                                {!! Form::input('text', 'titulo', null, ['class' => 'form-control form-input'])  !!}
                                 {!! $errors->first('titulo','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('cargo') ? 'has-error' :'' }}">
                                 {!! Form::label('cargo', 'Cargo') !!}
-                                {!! Form::input('text', 'cargo', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
+                                {!! Form::input('text', 'cargo', null, ['class' => 'form-control form-input'])  !!}
                                 {!! $errors->first('cargo','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('descricao') ? 'has-error' :'' }}">
                                 {!! Form::label('descricao', 'Descrição') !!}
-                                {!! Form::input('text', 'descricao', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
+                                {!! Form::textarea('descricao', null, ['class' => 'form-control form-input', 'rows' => '3'])  !!}
                                 {!! $errors->first('descricao','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('data_publicacao') ? 'has-error' :'' }}">
                                 {!! Form::label('data_publicacao', 'Data de Publicação') !!}
-                                {!! Form::input('text', 'data_publicacao', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
+                                {!! Form::input('text', 'data_publicacao', null, ['class' => 'dateinput form-control form-input', 'placeholder' => ''])  !!}
                                 {!! $errors->first('data_publicacao','<span class="help-block">:message</span>') !!}
                             </div>
 
                             <div class="form-group {{ $errors->has('data_final') ? 'has-error' :'' }}">
                                 {!! Form::label('data_final', 'Data Final') !!}
-                                {!! Form::input('text', 'data_final', null, ['class' => 'form-control', '', 'placeholder' => ''])  !!}
+                                {!! Form::input('text', 'data_final', null, ['class' => 'dateinput form-control form-input', 'placeholder' => ''])  !!}
                                 {!! $errors->first('data_final','<span class="help-block">:message</span>') !!}
                             </div>
 
 
-                            {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+                            {!! Form::submit('Salvar', ['class' => 'btn btn-primary btn-save']) !!}
 
                         {!! Form::close() !!}
                     </div>
@@ -85,4 +85,5 @@
             </div>
         </div>
     </div>
-@endsection
+
+    @endsection

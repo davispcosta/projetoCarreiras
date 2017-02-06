@@ -1,4 +1,4 @@
-@extends('authempresa.layout.auth')
+@extends('empresa.layout.auth')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('authempresa') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('empresa') }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">

@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Vagas
-                        @if (Auth::getDefaultDriver() == 'aluno')
+                        @if (Auth::getDefaultDriver() == 'authaluno')
                         @elseif (Auth::getDefaultDriver() == 'empresa')
                             <a class="pull-right" href="{{ url('empresa/registrar-vaga') }}">Registrar Vaga</a>
 
@@ -22,11 +22,11 @@
                         @endif
 
                         <table class="table">
-                            <th>Tipo de Estagio</th>
-                            <th>Titulo</th>
-                            <th>Cargo</th>
+                            <th class="table-title">Tipo de Estagio</th>
+                            <th class="table-title">Titulo</th>
+                            <th class="table-title">Cargo</th>
                             @if (Auth::getDefaultDriver() != 'aluno')
-                            <th>Ações</th>
+                            <th class="table-title">Ações</th>
                             @endif
                             <tbody>
                             @foreach($vagas as $vaga)
@@ -37,14 +37,14 @@
                                     @if (Auth::getDefaultDriver() != 'aluno')
                                     <td>
                                         @if (Auth::getDefaultDriver() == 'admin')
-                                          <a href="/admin/vagas/{{ $vaga->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                          <a href="/admin/vagas/{{ $vaga->id }}/editar" class="btn btn-edit btn-sm">Editar</a>
                                           {!! Form::open(['method' => 'DELETE', 'url' => 'admin/vagas/'.$vaga->id, 'style' => 'display: inline;']) !!}
-                                          <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                          <button type="submit" class="btn btn-delete btn-sm">Excluir</button>
                                           {!! Form::close() !!}
                                         @elseif (Auth::getDefaultDriver() == 'empresa')
-                                          <a href="/empresa/vagas/{{ $vaga->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                          <a href="/empresa/vagas/{{ $vaga->id }}/editar" class="btn btn-edit btn-sm">Editar</a>
                                           {!! Form::open(['method' => 'DELETE', 'url' => 'empresa/vagas/'.$vaga->id, 'style' => 'display: inline;']) !!}
-                                          <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                          <button type="submit" class="btn btn-delete btn-sm">Excluir</button>
                                           {!! Form::close() !!}
                                         @endif
                                     </td>

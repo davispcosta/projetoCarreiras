@@ -18,10 +18,10 @@
                         @endif
 
                         <table class="table">
-                            <th>Nome</th>
-                            <th>Email</th>
-                            <th>Matricula</th>
-                            <th>Ações</th>
+                            <th class="table-title">Nome</th>
+                            <th class="table-title">Email</th>
+                            <th class="table-title">Matricula</th>
+                            <th class="table-title">Ações</th>
                             <tbody>
                             @foreach($alunos as $aluno)
                                 <tr>
@@ -30,9 +30,9 @@
                                     <td>{{ $aluno->matricula}}</td>
                                     <td>
                                         @if (Auth::getDefaultDriver() == 'admin')
-                                            <a href="/admin/alunos/{{ $aluno->id }}/editar" class="btn btn-default btn-sm">Editar</a>
+                                            <a href="/admin/alunos/{{ $aluno->id }}/editar" class="btn btn-edit btn-sm">Editar</a>
                                             {!! Form::open(['method' => 'DELETE', 'url' => 'admin/alunos/'.$aluno->id, 'style' => 'display: inline;']) !!}
-                                            <button type="submit" class="btn btn-default btn-sm">Excluir</button>
+                                            <button type="submit" class="btn btn-delete btn-sm">Excluir</button>
                                             {!! Form::close() !!}
                                         @endif
                                     </td>

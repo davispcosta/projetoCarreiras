@@ -6,7 +6,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Empresas
-                        @if (Auth::getDefaultDriver() == 'aluno')
+                        @if (Auth::getDefaultDriver() == 'authaluno')
                         @elseif (Auth::getDefaultDriver() == 'empresa')
                             <a class="pull-right" href="{{ url('empresa/registrar-empresa') }}">Registrar Empresa</a>
                         @else
@@ -21,10 +21,10 @@
                         @endif
 
                         <table class="table">
-                            <th>Nome Fantasia</th>
-                            <th>Telefone</th>
-                            <th>Logradouro</th>
-                            <th>Ações</th>
+                            <th class="table-title">Nome Fantasia</th>
+                            <th class="table-title">Telefone</th>
+                            <th class="table-title">Logradouro</th>
+                            <th class="table-title">Ações</th>
                             <tbody>
                                 @foreach($empresas as $empresa)
                                 <tr>

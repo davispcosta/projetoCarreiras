@@ -15,8 +15,8 @@ class CreateAlunos extends Migration
             $table->string('email')->unique();
             $table->string('endereco');
             $table->string('password');
-            $table->char('telefone', 12);
-            $table->char('cpf', 12)->unique();
+            $table->string('telefone');
+            $table->string('cpf')->unique();
             $table->char('identidade', 11);
             $table->integer('semestre');
             $table->integer('matricula');

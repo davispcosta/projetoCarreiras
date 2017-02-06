@@ -54,7 +54,7 @@
                                     Entrar
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('authaluno') }}">
+                                <a class="btn btn-link" href="{{ url('aluno') }}">
                                     Esqueceu sua senha?
                                 </a>
 
