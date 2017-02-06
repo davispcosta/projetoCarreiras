@@ -1,4 +1,4 @@
-@extends('admin.layout.auth')
+@extends('authadmin.layout.auth')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Reset Password</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/admin/password/reset') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('authadmin') }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">

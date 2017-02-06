@@ -54,7 +54,7 @@
                                     Entrar
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/aluno/password/reset') }}">
+                                <a class="btn btn-link" href="{{ url('authaluno') }}">
                                     Esqueceu sua senha?
                                 </a>
 

@@ -54,7 +54,7 @@
                                     Login
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/empresa/password/reset') }}">
+                                <a class="btn btn-link" href="{{ url('authempresa') }}">
                                     Esqueceu sua senha?
                                 </a>
                                 <a class="btn btn-link" href="{{ url('/empresa/register') }}">

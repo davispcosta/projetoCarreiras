@@ -1,4 +1,4 @@
-@extends('aluno.layout.auth')
+@extends('authaluno.layout.auth')
 
 @section('content')
 <div class="container">
@@ -8,7 +8,7 @@
                 <div class="panel-heading">Resetar Senha</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/aluno/password/reset') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('authaluno') }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">

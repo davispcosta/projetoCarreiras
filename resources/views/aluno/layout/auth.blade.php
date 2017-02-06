@@ -52,7 +52,7 @@
 
                     @else
                         <li><a href="{{ url('aluno/estagios') }}">Estagios</a></li>
-                        <li><a href="{{ url('aluno/vagas') }}">Vagas</a></li>
+                        <li><a href="{{ url('authaluno') }}">Vagas</a></li>
 
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">

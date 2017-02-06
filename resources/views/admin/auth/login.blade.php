@@ -54,7 +54,7 @@
                                     Entrar
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/admin/password/reset') }}">
+                                <a class="btn btn-link" href="{{ url('authadmin') }}">
                                     Esqueceu sua senha?
                                 </a>
                                 <a class="btn btn-link" href="{{ url('/admin/register') }}">

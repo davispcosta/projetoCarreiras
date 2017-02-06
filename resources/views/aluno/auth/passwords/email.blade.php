@@ -1,4 +1,4 @@
-@extends('aluno.layout.auth')
+@extends('authaluno.layout.auth')
 
 <!-- Main Content -->
 @section('content')
